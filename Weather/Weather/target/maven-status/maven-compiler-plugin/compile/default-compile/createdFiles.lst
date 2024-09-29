@@ -1,0 +1,14 @@
+com\Outfits\Weather\exception\RateLimitException.class
+com\Outfits\Weather\model\WeatherResponse$Weather.class
+com\Outfits\Weather\OutfitSuggestionsRelativeToWeatherApplication.class
+com\Outfits\Weather\repository\WeatherSuggestionRepository.class
+com\Outfits\Weather\model\WeatherResponse$Main.class
+com\Outfits\Weather\model\WeatherSuggestion.class
+com\Outfits\Weather\service\WeatherService.class
+com\Outfits\Weather\rateLimiter\RateLimiter.class
+com\Outfits\Weather\config\WebConfig.class
+com\Outfits\Weather\exception\GlobalExceptionHandler.class
+com\Outfits\Weather\interceptor\RateLimitInterceptor.class
+com\Outfits\Weather\controller\WeatherConditionController.class
+com\Outfits\Weather\rateLimiter\RateLimiter$UserRequest.class
+com\Outfits\Weather\model\WeatherResponse.class

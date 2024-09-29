@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Suggestions</title>
+</head>
+<body>
+    <h1>Get Outfit Suggestions Based on Weather</h1>
+    <button id="getSuggestions">Get Outfit Suggestions</button>
+    <div id="suggestionDisplay"></div>
+
+    <script>
+        document.getElementById('getSuggestions').addEventListener('click', function() {
+            fetch('/api/suggestions/outfit')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Display the weather information in the page
+                    let suggestions = `Weather: ${data.weather[0].main}, Temperature: ${data.main.temp}°C`;
+                    document.getElementById('suggestionDisplay').innerText = suggestions;
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                    document.getElementById('suggestionDisplay').innerText = 'Failed to load outfit suggestions.';
+                });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-Based Outfit Suggestion</title>
+    <script>
+        function getOutfitSuggestion() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    
+                    fetch(`/api/suggestions/outfit?latitude=${latitude}&longitude=${longitude}`)
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById("suggestion").innerText = data;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching outfit suggestion:', error);
+                            document.getElementById("suggestion").innerText = "Error fetching suggestion.";
+                        });
+                }, error => {
+                    console.error('Error getting location:', error);
+                    document.getElementById("suggestion").innerText = "Unable to retrieve location.";
+                });
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = getOutfitSuggestion;
+    </script>
+</head>
+<body>
+    <h1>Outfit Suggestion</h1>
+    <p id="suggestion">Loading...</p>
+</body>
+</html>
